@@ -40,11 +40,11 @@
 /* 鼠标样式 */
 #cursor {
   position: fixed;
-  width: 32px;
-  height: 32px;
+  width: 16px;
+  height: 16px;
   /* 这里改变跟随的底色 */
-  background：rgb(64,224,205);
-  border-radius: 16px;
+  background: rgb(64, 224, 205);
+  border-radius: 8px;
   opacity: 0.25;
   z-index: 10086;
   pointer-events: none;
@@ -74,7 +74,7 @@
   -o-transform: scale(0.5);
 }
 :root {
-  --trans-light: rgba(255, 255, 255, 0.88);
+  --trans-light: rgba(225, 225, 225, 0.8);
   --trans-dark: rgba(25, 25, 25, 0.88);
   --border-style: 1px solid rgb(169, 169, 169);
   --backdrop-filter: blur(5px) saturate(150%);
