@@ -240,6 +240,15 @@
             </div>
             <div class="card-tags">${tags}</div>
             <div class="card-comment">${item.comment || '暂无评价'}</div>
+            ${item.link ? 
+  `<a href="${item.link}" target="_blank" class="link-btn" style="display:block; text-align:center; margin-top:10px; text-decoration:none; background:#f0f2f5; padding:5px; border-radius:4px; font-size:12px; color:#333;">
+     ${
+       this.state.tab === 'novel' 
+         ? '❤️ 去晋江'  // 如果是网文
+         : (this.state.tab === 'book' ? '📘 去豆瓣读书' : '🎬 去豆瓣/B站') // 否则：如果是书？去豆瓣；不是书(即影视)？去B站
+     }
+   </a>` 
+: ''}
           </div>
         `;
       });
