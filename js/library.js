@@ -17,9 +17,16 @@
     // 筛选配置
     config: {
       novel: [
-        { key: 'genre', name: '类型', vals: ['现言','古言','无CP'] },
-        { key: 'ml_status', name: '男主', vals: ['SC','初恋','非C','有前任'] },
-        { key: 'love_type', name: '模式', vals: ['男暗恋女','双向暗恋','女主先'] }
+        { key: 'genre', name: '类型', vals: ['现言','古言','幻言','无CP'] },
+        { key: 'novel_type', name: '题材', vals: ['校园','职场','娱乐圈','宫廷'] },
+        { key: 'words', name: '字数', vals: ['5w以下','5-10w','10-20w','20-30w','30w以上'] },
+        { key: 'end', name: '结局', vals: ['HE','BE','开放','半开放'] }
+        { key: 'ml_status', name: '男主', vals: ['SC','C','初恋','有前任','非C'] },
+        { key: 'love', name: '模式', vals: ['男暗恋女','双向暗恋','女暗恋男','温暖的文'] }
+        { key: 'love_type', name: '类型', vals: ['先婚后爱','青梅竹马','蓄谋已久','破镜重圆','豪门世家','日久生情'] }
+        { key: 'love_reason', name: '暗恋原因（仅男暗恋女）', vals: ['一见钟情','救赎','特殊的原因','公主X骑士','豪门世家'] }
+        
+
       ],
       book: [
         { key: 'topic', name: '分类', vals: ['二战','文学','历史','社科'] },
@@ -56,7 +63,7 @@
       container.innerHTML = `
         <!-- Tabs -->
         <div class="lib-tabs">
-          <div class="lib-tab-item active" data-tab="novel">💘 晋江·暗恋</div>
+          <div class="lib-tab-item active" data-tab="novel">💘 晋江·主要暗恋题材</div>
           <div class="lib-tab-item" data-tab="book">📖 严肃·藏书</div>
           <div class="lib-tab-item" data-tab="media">🎬 影音·二战</div>
         </div>

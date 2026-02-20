@@ -1,0 +1,146 @@
+/* Hexo/Butterfly 特别适配样式 */
+#liberation-calendar-container {
+    font-family: var(--global-font), sans-serif;
+    color: var(--font-color);
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+.cal-header-title {
+    text-align: center;
+    border-bottom: 2px solid var(--theme-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.cal-header-title h2 { margin: 0 0 10px 0; color: var(--text-highlight-color); }
+.cal-subtitle { font-style: italic; color: #888; font-size: 0.9em; }
+
+.cal-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+@media (min-width: 768px) {
+    .cal-wrapper { flex-direction: row; }
+}
+
+/* 左侧：详情面板 */
+.cal-details-panel {
+    flex: 2;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+.cal-details-panel:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+.cal-date-title { 
+    font-size: 1.5em; 
+    border-bottom: 1px solid var(--hr-border); 
+    padding-bottom: 10px; 
+    margin-top: 0;
+    color: var(--text-highlight-color);
+}
+
+.cal-category { margin-top: 20px; }
+.cal-category-title { 
+    font-weight: bold; 
+    color: var(--theme-color); 
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+.cal-event-list { padding-left: 20px; margin: 0; }
+.cal-event-list li { margin-bottom: 8px; }
+
+/* 媒体块容器 (方块型，用于图片/视频) */
+.cal-media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+.cal-media-card {
+    background: var(--card-bg);
+    border: 1px solid var(--hr-border);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.cal-media-card img, .cal-media-card iframe {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.cal-media-caption {
+    padding: 8px;
+    font-size: 0.85em;
+    text-align: center;
+    color: #666;
+    background: var(--card-bg);
+    border-top: 1px solid var(--hr-border);
+}
+
+.cal-micro-history { 
+    background-color: var(--blockquote-bg); 
+    padding: 15px; 
+    border-left: 4px solid var(--theme-color); 
+    margin-top: 20px;
+    border-radius: 0 6px 6px 0;
+}
+.cal-micro-history strong { color: var(--text-highlight-color); }
+
+/* 右侧：日历导航 */
+.cal-nav-panel {
+    flex: 1;
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+.cal-nav-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.cal-nav-header button { 
+    cursor: pointer; 
+    background: var(--btn-bg); 
+    color: var(--btn-color);
+    border: none; 
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+.cal-nav-header button:hover { background: var(--btn-hover-color); }
+
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+}
+.cal-grid div {
+    padding: 8px 0;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+.cal-grid .cal-day-header { font-weight: bold; color: #888; }
+.cal-grid .cal-date-cell { 
+    cursor: pointer; 
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+.cal-grid .cal-date-cell:hover { background-color: var(--text-bg-hover); border-color: var(--theme-color);}
+.cal-grid .cal-has-event { 
+    font-weight: bold; 
+    color: var(--theme-color);
+    background-color: rgba(var(--theme-color-rgb), 0.1); 
+}
+.cal-grid .cal-active-date { 
+    background-color: var(--theme-color) !important; 
+    color: #fff !important; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
