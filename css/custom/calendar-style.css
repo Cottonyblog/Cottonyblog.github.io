@@ -144,3 +144,124 @@
     color: #fff !important; 
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+/* ====== 新增：滚轮日期选择器样式 (修正手感版) ====== */
+
+.cal-nav-header { display: none !important; }
+
+.date-picker-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* 增加列间距，防止误触 */
+    height: 150px; /* 稍微增高，容纳更多视野，但聚焦中间 */
+    margin-bottom: 15px;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--hr-border);
+    overflow: hidden;
+    /* 渐变遮罩增强，让上下两端更隐形，突出中间 */
+    mask-image: linear-gradient(to bottom, transparent, black 40%, black 60%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 40%, black 60%, transparent 95%);
+    cursor: grab;
+}
+
+.date-picker-wrapper:active { cursor: grabbing; }
+
+/* 高亮选中条 */
+.date-picker-highlight {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    height: 32px; /* 稍微加高一点容错 */
+    transform: translateY(-50%);
+    background-color: rgba(var(--theme-color-rgb), 0.05);
+    border-top: 2px solid var(--theme-color);
+    border-bottom: 2px solid var(--theme-color);
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 4px;
+}
+
+/* 滚动列 */
+.picker-column {
+    width: 80px;
+    height: 100%;
+    overflow-y: auto;
+    /* 核心修改：y mandatory 保证必须停在格子上 */
+    scroll-snap-type: y mandatory; 
+    scrollbar-width: none;
+    z-index: 1;
+    /* 增加平滑滚动属性 */
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+}
+.picker-column::-webkit-scrollbar { display: none; }
+
+/* 滚动项 */
+.picker-item {
+    height: 32px; /* 与高亮条一致 */
+    line-height: 32px;
+    text-align: center;
+    /* 核心修改：center 居中对齐 */
+    scroll-snap-align: center; 
+    /* 【关键】always 禁止飞速滑动，必须一格格停顿，增加阻尼感 */
+    scroll-snap-stop: always; 
+    font-size: 0.95em;
+    color: #999;
+    cursor: pointer;
+    user-select: none; /* 禁止文字被选中 */
+    font-family: 'Courier New', monospace; /* 使用等宽字体增加仪表感 */
+}
+
+/* 选中项样式 */
+.picker-item-active {
+    color: var(--theme-color);
+    font-weight: 900;
+    font-size: 1.2em;
+    transform: scale(1.1); /* 微微放大 */
+}
+
+/* 占位符调整 */
+.picker-padding { height: 59px; /* (150 - 32) / 2 */ width: 100%; }
+/* ====== 新增：中英文切换按钮样式 ====== */
+
+/* 放在标题区域右上角 */
+.lang-switch-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--theme-color);
+    color: var(--theme-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    cursor: pointer;
+    font-family: var(--global-font), sans-serif;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.lang-btn:hover {
+    background: var(--theme-color);
+    color: #fff;
+}
+
+/* 适配移动端：防止按钮挡住标题 */
+@media (max-width: 768px) {
+    .lang-switch-wrapper {
+        position: relative;
+        top: 0;
+        right: 0;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .lang-btn { margin: 0 auto; }
+}
